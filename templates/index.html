@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'heapsort.js') }}" ></script>
+    <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#startModal').modal('show');
+    });
+    </script>
+    <meta charset="UTF-8">
+    <title>Heapsort</title>
+</head>
+<body>
+<div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Sort</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row-fluid">
+            <div class="form-group" id="input-form">
+                <label for="inputArray">Items to Sort</label>
+                <input class="form-control" id="inputArray" placeholder="Enter items">
+                <small id="inputHelp" class="form-text text-muted">Separate each item with a space</small>
+            </div>
+          </div>
+          <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" id="explanationCheckbox" type="checkbox" value="" checked>
+                Show Explanations for each step?
+              </label>
+          </div>
+          <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" id="heapCheckbox" type="checkbox" value="" checked>
+                Show steps for building the initial heap?
+              </label>
+          </div>
+          <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" id="timeoutCheckbox" type="checkbox" value="" checked>
+                Automatically go to the next step?
+              </label>
+          </div>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="initializeSetup()">Show Solution</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="initializeSetup()">Show Steps for Solution</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="wrapper" class="active">
+<div id="sidebar-wrapper">
+        <div class="sidebar-nav">
+            <div class="container">
+                <div class="row">
+                    <p id="itemsidebar">HeapSort</p>
+                </div>
+                <div class="row">
+                    <button type="button" id="new-sort" class="btn btn-primary" data-toggle="modal" data-target="#startModal" onclick="clearInputArray()">New Sort</button>
+                </div>
+                <div class="row" id="step-row">
+                  <button type="button" class="btn btn-primary step-buttons">Previous Step</button>
+                  <button type="button" class="btn btn-primary step-buttons" onclick="nextStep()">Next Step</button>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+    <div id="array-table">
+        <table class="table table-bordered" id="sort-table"></table>
+    </div>
+    <div id="tree">
+        <table class="table" id="tree-table"></table>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
