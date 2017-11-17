@@ -91,3 +91,7 @@
 #tree-table td{
     border: 1px solid transparent;
 }
+
+svg.jtk-connector{
+    z-index: -10;
+}
