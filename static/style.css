@@ -95,3 +95,7 @@
 svg.jtk-connector{
     z-index: -10;
 }
+
+.swap-node {
+    background: #dfee46;
+}

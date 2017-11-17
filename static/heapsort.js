@@ -5,10 +5,30 @@ let arrayLength;
 let timeout_period = 5000;
 const actionQueue = new Queue();
 
+const oldActions = [];
+
 function nextStep(){
     if (!actionQueue.isEmpty()) {
+        removeHighlighting();
         let step = actionQueue.dequeue();
         step.swapUIElements();
+        oldActions.push(step)
+    }
+}
+
+function previousStep(){
+    if (oldActions.length !== 0){
+        removeHighlighting();
+        let step = oldActions.pop();
+        step.swapBackUIElements();
+        actionQueue.
+    }
+}
+
+function removeHighlighting(){
+    var nodes = document.getElementsByClassName("node");
+    for (var i = 0; i < nodes.length; i++){
+        nodes[i].classList.remove('swap-node')
     }
 }
 
@@ -56,7 +76,6 @@ function initializeSetup() {
     makeEmptyTable(findHeight(0));
     createNodes();
     connectNodes();
-    all_iterations_of_sorting.push(input_array);
     input_array = buildHeap(input_array);
     sort(input_array);
 }
@@ -208,6 +227,15 @@ class SwapChange {
         const el2 = document.getElementById(this.item2.toString());
         el.innerHTML = this.current_array[this.item2];
         el2.innerHTML = this.current_array[this.item1];
+        el.classList.add('swap-node');
+        el2.classList.add('swap-node');
+    }
+
+    swapBackUIElements(){
+        const el = document.getElementById(this.item1.toString());
+        const el2 = document.getElementById(this.item2.toString());
+        el.innerHTML = this.current_array[this.item1];
+        el2.innerHTML = this.current_array[this.item2];
     }
 
 
