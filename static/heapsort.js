@@ -107,7 +107,7 @@ function solve(showsteps) {
     removeErrors();
     showSteps = showsteps;
     timer.start();
-    if (!document.getElementById('timeoutCheckbox').checked) {
+    if (!document.getElementById('timeoutCheckbox').checked && showSteps) {
         timer.stop()
     }
     setInputArray();
@@ -390,7 +390,7 @@ function Timer(fn, t) {
     // start with new interval, stop current interval
     this.reset = function(newT) {
         t = newT;
-        if (!document.getElementById('timeoutCheckbox').checked) {
+        if (!document.getElementById('timeoutCheckbox').checked && showSteps) {
            return this.stop();
         }
         if (!showSteps) {
