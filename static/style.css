@@ -11,6 +11,7 @@
     width:18%;
     right: 0;
     box-shadow: 4px 0px 5px 10px #aaaaaa;
+    z-index: 10;
 }
 
 #itemsidebar {
@@ -76,8 +77,21 @@ svg.jtk-connector{
     background: #dfee46;
 }
 
+.remove-node {
+    background: black;
+}
+
 #info-container {
     width:82%;
     left: 0;
     position: fixed;
+}
+
+#finalButton {
+    margin-top: 1em;
+}
+
+#stepButton {
+    margin-top: 1em;
+    float: right;
 }

@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'jsplumb.min.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'jquery.toaster.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'simply-toast.js') }}"></script>
 
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
     <script type = "text/javascript" src = "{{ url_for('static', filename = 'heapsort.js') }}" ></script>
@@ -32,8 +32,8 @@
           <div class="row-fluid">
             <div class="form-group" id="input-form">
                 <label for="inputArray">Items to Sort</label>
-                <input class="form-control" id="inputArray" placeholder="Enter items">
-                <small id="inputHelp" class="form-text text-muted">Separate each item with a space</small>
+                <input class="form-control" id="inputArray" placeholder="Enter items" onkeypress="return isValid(event)">
+                <small id="inputHelp" class="form-text text-muted">Separate each number with a space</small>
             </div>
           </div>
           <div class="form-check">
@@ -44,18 +44,12 @@
           </div>
           <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" id="heapCheckbox" type="checkbox" value="" checked>
-                Show steps for building the initial heap?
-              </label>
-          </div>
-          <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" id="timeoutCheckbox" type="checkbox" value="" checked>
+                <input class="form-check-input" id="timeoutCheckbox" type="checkbox" value="">
                 Automatically go to the next step?
               </label>
           </div>
-        <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="initializeSetup()">Show Solution</button>
-        <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="initializeSetup()">Show Steps for Solution</button>
+          <button id="finalButton" type="button" data-dismiss="modal" class="btn btn-primary" onclick="solve(true)">Show Steps for Solution</button>
+          <button id="stepButton" type="button" data-dismiss="modal" class="btn btn-primary" onclick="solve(false)">Show Final Solution</button>
       </div>
     </div>
   </div>
